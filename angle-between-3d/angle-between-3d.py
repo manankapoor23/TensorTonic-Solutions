@@ -1,0 +1,21 @@
+import numpy as np
+
+def angle_between_3d(v, w):
+    """
+    Compute the angle (in radians) between two 3D vectors.
+    """
+    # Your code here
+    v = np.asarray(v,dtype=float)
+    w = np.asarray(w,dtype=float)
+
+    norm_v = np.linalg.norm(v)
+    norm_w = np.linalg.norm(w)
+    eps = 1e-10
+
+    if(norm_v < eps or norm_w<eps):
+        return np.nan
+    
+
+    cos_theta = np.dot(v,w)/(norm_v * norm_w)
+    ans = np.clip(cos_theta,-1.0,1.0)
+    return float(np.arccos(ans))
